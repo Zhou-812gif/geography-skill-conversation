@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript 基础知识练习</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      padding: 30px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .section h2 {
+      font-size: 1.2rem;
+      color: #3498db;
+      margin-bottom: 14px;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+    }
+    pre {
+      background: #282c34;
+      color: #abb2bf;
+      border-radius: 6px;
+      padding: 16px;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+    .output-box {
+      background: #eaf4fb;
+      border: 1px solid #aed6f1;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      min-height: 40px;
+    }
+    .run-btn {
+      margin-top: 12px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .run-btn:hover { background: #2980b9; }
+    .tag { color: #e06c75; }
+    .keyword { color: #c678dd; }
+    .string { color: #98c379; }
+    .comment { color: #5c6370; font-style: italic; }
+    .number { color: #d19a66; }
+  </style>
+</head>
+<body>
+
+<h1>🚀 JavaScript 基础知识练习</h1>
+
+<!-- ① 变量的定义 -->
+<div class="section">
+  <h2>① 变量的定义</h2>
+  <pre id="code1">
+<span class="comment">// 使用 var、let、const 定义变量</span>
+<span class="keyword">var</span>   name  = <span class="string">"Alice"</span>;      <span class="comment">// 函数作用域，可重复声明</span>
+<span class="keyword">let</span>   age   = <span class="number">20</span>;           <span class="comment">// 块作用域，可重新赋值</span>
+<span class="keyword">const</span> PI    = <span class="number">3.14159</span>;      <span class="comment">// 常量，不可重新赋值</span>
+
+console.log(name, age, PI);
+  </pre>
+  <button class="run-btn" onclick="runVar()">▶ 运行</button>
+  <div class="output-box" id="out1">点击运行查看输出…</div>
+</div>
+
+<!-- ② 变量类型 -->
+<div class="section">
+  <h2>② 变量类型</h2>
+  <pre id="code2">
+<span class="comment">// JS 中的七种基本类型 + 对象类型</span>
+<span class="keyword">let</span> str     = <span class="string">"Hello"</span>;        <span class="comment">// string</span>
+<span class="keyword">let</span> num     = <span class="number">42</span>;             <span class="comment">// number</span>
+<span class="keyword">let</span> bool    = <span class="keyword">true</span>;           <span class="comment">// boolean</span>
+<span class="keyword">let</span> nothing = <span class="keyword">null</span>;           <span class="comment">// null</span>
+<span class="keyword">let</span> undef;                     <span class="comment">// undefined</span>
+<span class="keyword">let</span> sym     = Symbol(<span class="string">"id"</span>);   <span class="comment">// symbol</span>
+<span class="keyword">let</span> big     = <span class="number">9007199254740991n</span>; <span class="comment">// bigint</span>
+<span class="keyword">let</span> obj     = { x: <span class="number">1</span>, y: <span class="number">2</span> };  <span class="comment">// object</span>
+<span class="keyword">let</span> arr     = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];       <span class="comment">// array (object)</span>
+
+[str, num, bool, nothing, undef, sym, big, obj, arr]
+  .forEach(v => console.log(typeof v, "→", String(v)));
+  </pre>
+  <button class="run-btn" onclick="runType()">▶ 运行</button>
+  <div class="output-box" id="out2">点击运行查看输出…</div>
+</div>
+
+<!-- ③ 表达式 -->
+<div class="section">
+  <h2>③ 表达式</h2>
+  <pre id="code3">
+<span class="comment">// 算术、比较、逻辑、三元表达式</span>
+<span class="keyword">let</span> a = <span class="number">10</span>, b = <span class="number">3</span>;
+
+console.log(<span class="string">"算术: "</span>, a + b, a - b, a * b, a / b, a % b, a ** b);
+console.log(<span class="string">"比较: "</span>, a > b, a === b, a !== b);
+console.log(<span class="string">"逻辑: "</span>, a > <span class="number">5</span> && b < <span class="number">5</span>, a < <span class="number">5</span> || b < <span class="number">5</span>, !<span class="keyword">false</span>);
+
+<span class="keyword">let</span> max = (a > b) ? a : b;
+console.log(<span class="string">"三元表达式，较大值: "</span>, max);
+
+<span class="comment">// 字符串模板表达式</span>
+console.log(<span class="string">`模板字符串: a = ${a}, b = ${b}, a+b = ${a+b}`</span>);
+  </pre>
+  <button class="run-btn" onclick="runExpr()">▶ 运行</button>
+  <div class="output-box" id="out3">点击运行查看输出…</div>
+</div>
+
+<!-- ④ 流程控制 -->
+<div class="section">
+  <h2>④ 流程控制</h2>
+  <pre id="code4">
+<span class="comment">// if / else if / else</span>
+<span class="keyword">let</span> score = <span class="number">75</span>;
+<span class="keyword">if</span> (score >= <span class="number">90</span>)      console.log(<span class="string">"优秀"</span>);
+<span class="keyword">else if</span> (score >= <span class="number">60</span>) console.log(<span class="string">"及格"</span>);
+<span class="keyword">else</span>                  console.log(<span class="string">"不及格"</span>);
+
+<span class="comment">// switch</span>
+<span class="keyword">let</span> day = <span class="number">3</span>;
+<span class="keyword">switch</span> (day) {
+  <span class="keyword">case</span> <span class="number">1</span>: console.log(<span class="string">"周一"</span>); <span class="keyword">break</span>;
+  <span class="keyword">case</span> <span class="number">3</span>: console.log(<span class="string">"周三"</span>); <span class="keyword">break</span>;
+  <span class="keyword">default</span>: console.log(<span class="string">"其他"</span>);
+}
+
+<span class="comment">// for 循环</span>
+<span class="keyword">let</span> sum = <span class="number">0</span>;
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i <= <span class="number">5</span>; i++) sum += i;
+console.log(<span class="string">"1~5 之和: "</span>, sum);
+
+<span class="comment">// while 循环</span>
+<span class="keyword">let</span> n = <span class="number">1</span>, result = <span class="number">1</span>;
+<span class="keyword">while</span> (n <= <span class="number">5</span>) { result *= n; n++; }
+console.log(<span class="string">"5! = "</span>, result);
+
+<span class="comment">// for...of 遍历数组</span>
+<span class="keyword">let</span> fruits = [<span class="string">"苹果"</span>, <span class="string">"香蕉"</span>, <span class="string">"橙子"</span>];
+<span class="keyword">for</span> (<span class="keyword">const</span> f <span class="keyword">of</span> fruits) console.log(<span class="string">"水果: "</span>, f);
+  </pre>
+  <button class="run-btn" onclick="runFlow()">▶ 运行</button>
+  <div class="output-box" id="out4">点击运行查看输出…</div>
+</div>
+
+<!-- ⑤ 函数 -->
+<div class="section">
+  <h2>⑤ 函数</h2>
+  <pre id="code5">
+<span class="comment">// 函数声明</span>
+<span class="keyword">function</span> greet(name) {
+  <span class="keyword">return</span> <span class="string">`Hello, ${name}!`</span>;
+}
+console.log(greet(<span class="string">"世界"</span>));
+
+<span class="comment">// 函数表达式</span>
+<span class="keyword">const</span> square = <span class="keyword">function</span>(x) { <span class="keyword">return</span> x * x; };
+console.log(<span class="string">"3 的平方: "</span>, square(<span class="number">3</span>));
+
+<span class="comment">// 箭头函数</span>
+<span class="keyword">const</span> add = (a, b) => a + b;
+console.log(<span class="string">"箭头函数 5+7 = "</span>, add(<span class="number">5</span>, <span class="number">7</span>));
+
+<span class="comment">// 默认参数</span>
+<span class="keyword">function</span> power(base, exp = <span class="number">2</span>) {
+  <span class="keyword">return</span> base ** exp;
+}
+console.log(<span class="string">"power(4) = "</span>, power(<span class="number">4</span>));
+console.log(<span class="string">"power(2, 10) = "</span>, power(<span class="number">2</span>, <span class="number">10</span>));
+
+<span class="comment">// 递归函数</span>
+<span class="keyword">function</span> fibonacci(n) {
+  <span class="keyword">if</span> (n <= <span class="number">1</span>) <span class="keyword">return</span> n;
+  <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);
+}
+console.log(<span class="string">"fibonacci(8) = "</span>, fibonacci(<span class="number">8</span>));
+
+<span class="comment">// 高阶函数</span>
+<span class="keyword">const</span> nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">const</span> doubled = nums.map(x => x * <span class="number">2</span>);
+console.log(<span class="string">"map 结果: "</span>, doubled.join(<span class="string">", "</span>));
+  </pre>
+  <button class="run-btn" onclick="runFunc()">▶ 运行</button>
+  <div class="output-box" id="out5">点击运行查看输出…</div>
+</div>
+
+<script>
+  /* ─── 工具函数：捕获 console.log 输出到指定 div ─── */
+  function capture(fn, outId) {
+    const logs = [];
+    const orig = console.log;
+    console.log = (...args) => logs.push(args.map(a =>
+      (typeof a === 'object' && a !== null) ? JSON.stringify(a) : String(a)
+    ).join(' '));
+    try { fn(); } catch(e) { logs.push('❌ 错误: ' + e.message); }
+    console.log = orig;
+    document.getElementById(outId).textContent = logs.join('\n') || '（无输出）';
+  }
+
+  /* ─── ① 变量定义 ─── */
+  function runVar() {
+    capture(() => {
+      var   name  = "Alice";
+      let   age   = 20;
+      const PI    = 3.14159;
+      console.log(name, age, PI);
+    }, 'out1');
+  }
+
+  /* ─── ② 变量类型 ─── */
+  function runType() {
+    capture(() => {
+      let str     = "Hello";
+      let num     = 42;
+      let bool    = true;
+      let nothing = null;
+      let undef;
+      let sym     = Symbol("id");
+      let big     = 9007199254740991n;
+      let obj     = { x: 1, y: 2 };
+      let arr     = [1, 2, 3];
+      [str, num, bool, nothing, undef, sym, big, obj, arr]
+        .forEach(v => console.log(typeof v, "→", String(v)));
+    }, 'out2');
+  }
+
+  /* ─── ③ 表达式 ─── */
+  function runExpr() {
+    capture(() => {
+      let a = 10, b = 3;
+      console.log("算术: ", a+b, a-b, a*b, a/b, a%b, a**b);
+      console.log("比较: ", a>b, a===b, a!==b);
+      console.log("逻辑: ", a>5 && b<5, a<5 || b<5, !false);
+      let max = (a > b) ? a : b;
+      console.log("三元表达式，较大值: ", max);
+      console.log(`模板字符串: a = ${a}, b = ${b}, a+b = ${a+b}`);
+    }, 'out3');
+  }
+
+  /* ─── ④ 流程控制 ─── */
+  function runFlow() {
+    capture(() => {
+      let score = 75;
+      if (score >= 90)      console.log("优秀");
+      else if (score >= 60) console.log("及格");
+      else                  console.log("不及格");
+
+      let day = 3;
+      switch (day) {
+        case 1: console.log("周一"); break;
+        case 3: console.log("周三"); break;
+        default: console.log("其他");
+      }
+
+      let sum = 0;
+      for (let i = 1; i <= 5; i++) sum += i;
+      console.log("1~5 之和: ", sum);
+
+      let n = 1, result = 1;
+      while (n <= 5) { result *= n; n++; }
+      console.log("5! = ", result);
+
+      let fruits = ["苹果", "香蕉", "橙子"];
+      for (const f of fruits) console.log("水果: ", f);
+    }, 'out4');
+  }
+
+  /* ─── ⑤ 函数 ─── */
+  function runFunc() {
+    capture(() => {
+      function greet(name) { return `Hello, ${name}!`; }
+      console.log(greet("世界"));
+
+      const square = function(x) { return x * x; };
+      console.log("3 的平方: ", square(3));
+
+      const add = (a, b) => a + b;
+      console.log("箭头函数 5+7 = ", add(5, 7));
+
+      function power(base, exp = 2) { return base ** exp; }
+      console.log("power(4) = ", power(4));
+      console.log("power(2, 10) = ", power(2, 10));
+
+      function fibonacci(n) {
+        if (n <= 1) return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+      }
+      console.log("fibonacci(8) = ", fibonacci(8));
+
+      const nums = [1, 2, 3, 4, 5];
+      const doubled = nums.map(x => x * 2);
+      console.log("map 结果: ", doubled.join(", "));
+    }, 'out5');
+  }
+</script>
+
+</body>
+</html>
